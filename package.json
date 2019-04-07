@@ -45,7 +45,7 @@
     "documentation": "^9.2.0",
     "eslint": "^5.10.0",
     "eslint-plugin-flowtype": "^3.2.0",
-    "flow-bin": "^0.94.0",
+    "flow-bin": "^0.96.0",
     "flow-copy-source": "^2.0.2",
     "flow-coverage-report": "^0.6.1",
     "flow-typed": "^2.5.1",
