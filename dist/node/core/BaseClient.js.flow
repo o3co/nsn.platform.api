@@ -53,10 +53,12 @@ export class BaseClient {
     this.httpClient.interceptors.response.use(
       (response) => response,
       (error) => {
+        const res = JSON.stringify(error.response) || 'undefined'
         // eslint-disable-next-line no-console
-        console.log(`ERROR: (res = ${JSON.stringify(error.response)}, status = ${error.response ? error.response.status : ''} )`)
+        console.log(`ERROR: (res = ${res}, status = ${error.response ? error.response.status : ''} )`)
+        const err = JSON.stringify(error.message) || ''
         // eslint-disable-next-line no-console
-        console.log(`ERROR: ${ JSON.stringify(error.message) }`)
+        console.log(`ERROR: ${err}`)
 
         if(error.response && (401 == error.response.status)) {
           return Promise.reject(new AuthenticationError(error))
