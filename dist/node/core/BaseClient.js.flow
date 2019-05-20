@@ -20,6 +20,9 @@ export type ConstructParams = {
 /**
  */
 export class BaseClient {
+  /**
+   */
+  params: ConstructParams
 
   /**
    */
@@ -44,6 +47,7 @@ export class BaseClient {
   /**
    */
   constructor(params: ConstructParams = {}) {
+    this.params = params
     if(params.httpClient && (params.httpClient instanceof Axios)) {
       this.httpClient = params.httpClient
     } else {

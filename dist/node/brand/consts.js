@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EntryStates = void 0;
 
-/*  strict */
-
 /**
  */
 const EntryStates = {

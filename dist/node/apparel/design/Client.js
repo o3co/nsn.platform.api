@@ -7,8 +7,6 @@ exports.Client = void 0;
 
 var _core = require("../core");
 
-/*  strict */
-
 /**
  */
 
@@ -21,12 +19,20 @@ class Client extends _core.BaseClient {
   get basepath() {
     return '/apparel/designs';
   }
+
+  options(params = {}) {
+    return {
+      headers: {
+        'X-BRAND': params.brand
+      }
+    };
+  }
   /**
    *
    */
 
 
-  list(size = 10, offset = 0, opt = {}) {
+  list(brand, size = 10, offset = 0, opt = {}) {
     const condition = { ...opt.condition
     };
     return this.httpClient.get(this.relativePath(), {
@@ -42,56 +48,70 @@ class Client extends _core.BaseClient {
    */
 
 
-  describe(id) {
-    return this.httpClient.get(this.relativePath(id));
+  describe(brand, id) {
+    return this.httpClient.get(this.relativePath(id), this.options({
+      brand
+    }));
   }
   /**
    *
    */
 
 
-  register(entry) {
-    return this.httpClient.post(this.relativePath(), entry);
+  register(brand, entry) {
+    return this.httpClient.post(this.relativePath(), entry, this.options({
+      brand
+    }));
   }
   /**
    *
    */
 
 
-  update(id, params) {
-    return this.httpClient.post(this.relativePath(id), params);
+  update(brand, id, params) {
+    return this.httpClient.post(this.relativePath(id), params, this.options({
+      brand
+    }));
   }
   /**
    *
    */
 
 
-  archive(id, params = {}) {
-    return this.httpClient.post(this.relativePath(id, 'archive'), params);
+  archive(brand, id, params = {}) {
+    return this.httpClient.post(this.relativePath(id, 'archive'), params, this.options({
+      brand
+    }));
   }
   /**
    *
    */
 
 
-  unarchive(id, params = {}) {
-    return this.httpClient.post(this.relativePath(id, 'unarchive'), params);
+  unarchive(brand, id, params = {}) {
+    return this.httpClient.post(this.relativePath(id, 'unarchive'), params, this.options({
+      brand
+    }));
   }
   /**
    * Order sample
    */
 
 
-  order(id, params) {
-    return this.httpClient.post(this.relativePath(id, 'order'), params);
+  order(brand, id, params) {
+    return this.httpClient.post(this.relativePath(id, 'order'), params, this.options({
+      brand
+    }));
   }
   /**
    *
    */
 
 
-  productize(id, params = {}) {
-    return this.httpClient.post(this.relativePath(id, 'productize'), params);
+  productize(brand, id, params = {}) {
+    return this.httpClient.post(this.relativePath(id, 'productize'), params, this.options({
+      brand
+    }));
   }
 
 }

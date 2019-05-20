@@ -7,8 +7,6 @@ exports.helper = void 0;
 
 var _consts = require("./consts");
 
-/*  strict */
-
 /**
  */
 class Helper {
