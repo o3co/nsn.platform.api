@@ -1,6 +1,10 @@
+.DS_Store
 flow-typed/npm
 node_modules
 
+dist/*
+docs/*
+
 !.gitkeep
 
-.DS_Store
+yarn-error.log
