@@ -90,7 +90,7 @@ export class Client extends BaseClient {
     return '/apparel/designs'
   }
 
-  options(params: {}) {
+  options(params: any = {}) {
     return {
       headers: {
         'X-BRAND':   params.brand,
@@ -118,49 +118,49 @@ export class Client extends BaseClient {
    *
    */
   describe(brand: BrandKey, id: Id): Response<Snapshot> {
-    return this.httpClient.get(this.relativePath(id), options({ brand }))
+    return this.httpClient.get(this.relativePath(id), this.options({ brand }))
   }
 
   /**
    *
    */
   register(brand: BrandKey, entry: RegisterParams): Response<Entry> {
-    return this.httpClient.post(this.relativePath(), entry, options({ brand }))
+    return this.httpClient.post(this.relativePath(), entry, this.options({ brand }))
   }
 
   /**
    *
    */
   update(brand: BrandKey, id: Id, params: UpdateParams): Response<Entry> {
-    return this.httpClient.post(this.relativePath(id), params, options({ brand }))
+    return this.httpClient.post(this.relativePath(id), params, this.options({ brand }))
   }
 
   /**
    *
    */
   archive(brand: BrandKey, id: Id, params: ArchiveParams = {}): Response<void> {
-    return this.httpClient.post(this.relativePath(id, 'archive'), params, options({ brand }))
+    return this.httpClient.post(this.relativePath(id, 'archive'), params, this.options({ brand }))
   }
 
   /**
    *
    */
   unarchive(brand: BrandKey, id: Id, params: UnarchiveParams = {}): Response<void> {
-    return this.httpClient.post(this.relativePath(id, 'unarchive'), params, options({ brand }))
+    return this.httpClient.post(this.relativePath(id, 'unarchive'), params, this.options({ brand }))
   }
 
   /**
    * Order sample
    */
   order(brand: BrandKey, id: Id, params: OrderParams): Response<void> {
-    return this.httpClient.post(this.relativePath(id, 'order'), params, options({ brand }))
+    return this.httpClient.post(this.relativePath(id, 'order'), params, this.options({ brand }))
   }
 
   /**
    *
    */
   productize(brand: BrandKey, id: Id, params: ProductizeParams = {}): Response<void> {
-    return this.httpClient.post(this.relativePath(id, 'productize'), params, options({ brand }))
+    return this.httpClient.post(this.relativePath(id, 'productize'), params, this.options({ brand }))
   }
 }
 
