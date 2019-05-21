@@ -1,5 +1,6 @@
+# 
 .DS_Store
-flow-typed/npm
+#flow-typed/npm
 node_modules
 
 dist/*
