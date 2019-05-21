@@ -54,6 +54,7 @@
     "watch": "^1.0.2"
   },
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "debug": "^4.1.1"
   }
 }

@@ -33,6 +33,8 @@ import type {
   IndexedSnapshot,
 } from './types'
 
+const debug = require('debug')('platform:apparel:design:Client')
+
 /**
  * EntryState
  */
@@ -91,6 +93,7 @@ export class Client extends BaseClient {
   }
 
   options(params: any = {}) {
+    debug('option parameters', params)
     return {
       headers: {
         'X-BRAND':   params.brand,
@@ -106,6 +109,7 @@ export class Client extends BaseClient {
       ...opt.condition,
     }
     return this.httpClient.get(this.relativePath(), {
+      ...this.options({ brand }),
       params: {
         size,
         offset,
