@@ -10,8 +10,7 @@
     "npm": ">=6.4.0"
   },
   "scripts": {
-    "prepare": "npm-run-all prepare:*",
-    "prepare:flow-typed": "flow-typed install",
+    "flow:install": "flow-typed install",
     "lint": "npm-run-all lint:*",
     "lint:eslint": "eslint src/",
     "lint:flow": "flow check src",
@@ -23,6 +22,7 @@
     "build": "npm-run-all build:*",
     "build:babel": "babel --out-dir=dist/node src",
     "build:flow": "flow-copy-source src dist/node",
+    "postinstall": "npm-run-all build:*",
     "postbuild": "npm-run-all postbuild:*",
     "postbuild:coverage": "$npm_execpath run coverage",
     "coverage": "npm-run-all coverage:*",
