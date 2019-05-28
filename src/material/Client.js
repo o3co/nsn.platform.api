@@ -23,7 +23,7 @@ export class Client extends BaseClient {
   
   /**
    */
-  listEntries(size: number = 10, offset: number = 0): Response<PageResult<IndexedEntry>> {
+  listEntries = (size: number = 10, offset: number = 0): Response<PageResult<IndexedEntry>> => {
     return this.httpClient.get(this.relativePath(), {
       params: {
         size,
@@ -34,7 +34,7 @@ export class Client extends BaseClient {
   
   /**
    */
-  describeEntry(name: Name): Response<Entry> {
+  describeEntry = (name: Name): Response<Entry> => {
     return this.httpClient.get(this.relativePath(name))
   }
 }
