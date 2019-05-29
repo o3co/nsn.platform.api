@@ -9,3 +9,5 @@ docs/*
 !.gitkeep
 
 yarn-error.log
+
+package-lock.json

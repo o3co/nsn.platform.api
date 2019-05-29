@@ -1,0 +1,20 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+  build:
+    commands:
+      - echo Build started on `date`
+      - yarn
+      - yarn build
+  post_build:
+    commands:
+      - echo `date +%Y%m%d.%H%M%S` > datetime.out
+artifacts:
+  type: zip
+  files:
+    - ./releasespec.yml
+    - ./datetime.out
+
+
