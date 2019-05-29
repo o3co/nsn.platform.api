@@ -36,7 +36,7 @@ export class BaseClient {
 
   /**
    */
-  relativePath(...args: Array<string>): string {
+  relativePath = (...args: Array<string>): string => {
     const paths = Array.prototype.slice.apply(args)
     if(this.basepath) {
       paths.unshift(this.basepath)

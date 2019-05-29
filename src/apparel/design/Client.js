@@ -92,7 +92,7 @@ export class Client extends BaseClient {
     return '/apparel/designs'
   }
 
-  options(params: any = {}) {
+  options = (params: any = {}) => {
     debug('option parameters', params)
     return {
       headers: {
@@ -104,7 +104,7 @@ export class Client extends BaseClient {
   /**
    *
    */
-  list(brand: BrandKey, size: number = 10, offset: number = 0, opt: ListOption = {}): Response<PageResult<IndexedSnapshot>> {
+  list = (brand: BrandKey, size: number = 10, offset: number = 0, opt: ListOption = {}): Response<PageResult<IndexedSnapshot>> => {
     const condition = {
       ...opt.condition,
     }
@@ -121,49 +121,49 @@ export class Client extends BaseClient {
   /**
    *
    */
-  describe(brand: BrandKey, id: Id): Response<Snapshot> {
+  describe = (brand: BrandKey, id: Id): Response<Snapshot> => {
     return this.httpClient.get(this.relativePath(id), this.options({ brand }))
   }
 
   /**
    *
    */
-  register(brand: BrandKey, entry: RegisterParams): Response<Entry> {
+  register = (brand: BrandKey, entry: RegisterParams): Response<Entry> => {
     return this.httpClient.post(this.relativePath(), entry, this.options({ brand }))
   }
 
   /**
    *
    */
-  update(brand: BrandKey, id: Id, params: UpdateParams): Response<Entry> {
+  update = (brand: BrandKey, id: Id, params: UpdateParams): Response<Entry> => {
     return this.httpClient.post(this.relativePath(id), params, this.options({ brand }))
   }
 
   /**
    *
    */
-  archive(brand: BrandKey, id: Id, params: ArchiveParams = {}): Response<void> {
+  archive = (brand: BrandKey, id: Id, params: ArchiveParams = {}): Response<void> => {
     return this.httpClient.post(this.relativePath(id, 'archive'), params, this.options({ brand }))
   }
 
   /**
    *
    */
-  unarchive(brand: BrandKey, id: Id, params: UnarchiveParams = {}): Response<void> {
+  unarchive = (brand: BrandKey, id: Id, params: UnarchiveParams = {}): Response<void> => {
     return this.httpClient.post(this.relativePath(id, 'unarchive'), params, this.options({ brand }))
   }
 
   /**
    * Order sample
    */
-  order(brand: BrandKey, id: Id, params: OrderParams): Response<void> {
+  order = (brand: BrandKey, id: Id, params: OrderParams): Response<void> => {
     return this.httpClient.post(this.relativePath(id, 'order'), params, this.options({ brand }))
   }
 
   /**
    *
    */
-  productize(brand: BrandKey, id: Id, params: ProductizeParams = {}): Response<void> {
+  productize = (brand: BrandKey, id: Id, params: ProductizeParams = {}): Response<void> => {
     return this.httpClient.post(this.relativePath(id, 'productize'), params, this.options({ brand }))
   }
 }
