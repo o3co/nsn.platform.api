@@ -1,0 +1,29 @@
+version: 0.2
+
+env:
+  variables:
+    RELEASE_BRANCH: master
+  parameter-store:
+    ORIGIN: GIT_PLATFOMR_API_REPO
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+      - git clone ${ORIGIN} source
+      - cd source
+      - git config --global user.email "release@codebuild.aws"
+      - git config --global user.name "AWS CodeBuild"
+      - npm set progress=false
+  build:
+    commands:
+      - git checkout ${RELEASE_BRANCH}
+      - git merge develop -m "auto merge"
+      - npm install --package-lock-only
+      - npm version patch -m "Release v%s"
+      - npm publish
+      - git push origin ${RELEASE_BRANCH} 
+      - git push origin --tags
+
+

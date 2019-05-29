@@ -16,7 +16,7 @@ import type {
  */
 export class Client extends BaseClient {
   get basepath() {
-    return '/product/providers'
+    return '/providers'
   }
 
   /**

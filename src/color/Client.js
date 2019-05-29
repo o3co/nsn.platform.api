@@ -23,13 +23,13 @@ export class Client extends BaseClient {
 
   /**
    */
-  listEntries(): Response<PageResult<IndexedEntry>> {
+  listEntries = (): Response<PageResult<IndexedEntry>> => {
     return this.httpClient.get(this.relativePath())
   }
 
   /**
    */
-  describeEntry(name: Name): Response<Entry> {
+  describeEntry = (name: Name): Response<Entry> => {
     return this.httpClient.get(this.relativePath(name))
   }
 }
