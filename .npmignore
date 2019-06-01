@@ -1,0 +1,10 @@
+test/
+.babelrc
+.eslintrc.js
+.flow-coverage-reportrc.js
+.git*
+.npmrc
+buildspec.yml
+releasespec.yml
+rollup.config.js
+flow-types
