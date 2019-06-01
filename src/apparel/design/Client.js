@@ -96,8 +96,8 @@ export class Client extends BaseClient {
     debug('option parameters', params)
     return {
       headers: {
-        'X-BRAND':   params.brand,
-      }
+        'X-BRAND': params.brand,
+      },
     }
   }
 
@@ -114,7 +114,7 @@ export class Client extends BaseClient {
         size,
         offset,
         ...condition,
-      }
+      },
     })
   }
 

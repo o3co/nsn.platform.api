@@ -17,9 +17,9 @@ export type RGB = string
 /**
  */
 export type Color = {
-  name:  Name,
+  name: Name,
   label: Label,
-  rgb:   RGB
+  rgb: RGB
 }
 
 /**

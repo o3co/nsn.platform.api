@@ -15,8 +15,8 @@ export type Ratio = number;
 /**
  */
 type BaseEntry = {
-  name:   Name,
-  label:  Label,
+  name: Name,
+  label: Label,
 }
 
 /**

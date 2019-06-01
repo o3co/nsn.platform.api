@@ -1,4 +1,4 @@
-/* @flow strict */
+/* @flow */
 
 import axios, {
   Axios,
@@ -14,7 +14,7 @@ import {
 /**
  */
 export type ConstructParams = {
-  httpClient?:   Axios | AxiosXHRConfigBase<any, any>,
+  httpClient?: Axios | AxiosXHRConfigBase<any, any>,
 }
 
 /**
@@ -57,9 +57,8 @@ export class BaseClient {
     this.httpClient.interceptors.response.use(
       (response) => response,
       (error) => {
-        const res = JSON.stringify(error.response) || 'undefined'
         // eslint-disable-next-line no-console
-        console.log(`ERROR: (res = ${res}, status = ${error.response ? error.response.status : ''} )`)
+        console.log(`ERROR: (res = ${String(JSON.stringify(error.response))}, status = ${error.response ? error.response.status : ''} )`)
         const err = JSON.stringify(error.message) || ''
         // eslint-disable-next-line no-console
         console.log(`ERROR: ${err}`)
