@@ -4,14 +4,19 @@ module.exports = {
     "commonjs": true,
     "es6": true
   },
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "plugin:flowtype/recommended",
+    "@nsn",
+  ],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
   "plugins": [
-    "flowtype"
+    "flowtype",
+    "jest",
   ],
   "rules": {
     "indent": [
@@ -33,5 +38,6 @@ module.exports = {
     "no-unused-vars": ["warn"],
     "flowtype/use-flow-type": 1,
     "flowtype/define-flow-type": 1,
+    "no-underscore-dangle": ["error", { "allow": ["__get__"] }],
   }
 };
