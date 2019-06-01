@@ -82,46 +82,45 @@ export type EntryStateList = string
 
 export type VersionNumber = number
 
-
 // -------------------------------------------------
 // MODELS
 /**
  */
 export type Persisted = {
-  id:         Id,
-  createdAt:  Instant,
-  updatedAt:  Instant,
+  id: Id,
+  createdAt: Instant,
+  updatedAt: Instant,
 }
 
 /**
  */
 export type BaseSnapshot = Persisted & {
-  brand:           BrandKey,
-  designer:        DesignerId,
-  key:             Key,
-  snapshotAt:      Instant,
-  state:           EntryState,
-  version:         VersionNumber,
-  registeredAt:    Instant,
+  brand: BrandKey,
+  designer: DesignerId,
+  key: Key,
+  snapshotAt: Instant,
+  state: EntryState,
+  version: VersionNumber,
+  registeredAt: Instant,
   //
-  category?:        CategoryKey,
-  cost?:            Cost,
-  genderTarget?:    GenderTarget,
-  name?:            Name,
-  price?:           Price,
-  provider?:        ProviderId,
-  sizeFamily?:      SizeFamilyKey,
+  category?: CategoryKey,
+  cost?: Cost,
+  genderTarget?: GenderTarget,
+  name?: Name,
+  price?: Price,
+  provider?: ProviderId,
+  sizeFamily?: SizeFamilyKey,
 }
 
 /**
  */
 export type Snapshot = BaseSnapshot & {
-  comment?:        Comment,
+  comment?: Comment,
   // One-To-Many
-  attachments:     Array<Attachment>,
-  images:          Array<Image>,
-  measurements:    Array<Measurement>,
-  patterns:        Array<ColorPattern>,
+  attachments: Array<Attachment>,
+  images: Array<Image>,
+  measurements: Array<Measurement>,
+  patterns: Array<ColorPattern>,
 }
 
 /**
@@ -133,22 +132,22 @@ export type IndexedSnapshot = BaseSnapshot & {
 /**
  */
 export type FormFields = {
-  brand:           BrandKey,
-  category?:       CategoryKey,
-  comment?:        Comment,
-  cost?:           Cost,
-  designer?:       DesignerId,
-  genderTarget?:   GenderTarget,
-  name?:           Name,
-  price?:          Price,
-  provider?:       ProviderId,
-  sizeFamily?:     SizeFamilyKey,
+  brand: BrandKey,
+  category?: CategoryKey,
+  comment?: Comment,
+  cost?: Cost,
+  designer?: DesignerId,
+  genderTarget?: GenderTarget,
+  name?: Name,
+  price?: Price,
+  provider?: ProviderId,
+  sizeFamily?: SizeFamilyKey,
   // One-To-Many
-  attachments:     Array<Attachment>,
-  images:          Array<Image>,
-  measurements:    Array<Measurement>,
-  patterns:        Array<ColorPattern>,
-  sizes:           Array<SizeKey>,
+  attachments: Array<Attachment>,
+  images: Array<Image>,
+  measurements: Array<Measurement>,
+  patterns: Array<ColorPattern>,
+  sizes: Array<SizeKey>,
 }
 
 /**
@@ -156,17 +155,17 @@ export type FormFields = {
  * @property {boolean} isProductized - Is productized or not.
  */
 export type Entry = Persisted & FormFields & {
-  isProductized:   boolean,
+  isProductized: boolean,
 }
 
 /**
  */
 export type ColorPattern = {
-  colorLabel:   string,
+  colorLabel: string,
   colorFamilies: Array<string>,
-  texture:      string,
-  pattern:      string,
-  materials:    Array<MaterialRatio>
+  texture: string,
+  pattern: string,
+  materials: Array<MaterialRatio>
 }
 
 /**
@@ -180,7 +179,7 @@ export type Ratio = number
 /**
  */
 export type MaterialRatio = {
-  key:   MaterialName,
+  key: MaterialName,
   ratio: Ratio,
 }
 

@@ -14,7 +14,8 @@ export class AuthenticationError extends Error {
   request: ?(FlowHttpClientRequest<> | FlowXMLHttpRequest)
 
   constructor(error: AxiosError<any>) {
-    super(`Authentication Fault: ${ error.code ? error.code : ''} : ${ error.message } : ${ (error.request:any)._header }`)
+    // eslint-disable-next-line no-underscore-dangle
+    super(`Authentication Fault: ${ error.code ? error.code : ''} : ${ error.message } : ${ (error.request: any)._header }`)
     this.error   = error 
     this.request = error.request 
 

@@ -1,6 +1,6 @@
 /* @flow strict */
-import * as apparel   from './apparel'
 import * as brand     from './brand'
+import * as apparel   from './apparel'
 import * as category  from './category'
 import * as color     from './color'
 import * as core      from './core'

@@ -7,6 +7,6 @@ import type {
 /**
  */
 export const EntryStates: {[EntryState]: string} = {
-  active:    'アクティブ',
-  deleted:   '削除済み',
+  active: 'アクティブ',
+  deleted: '削除済み',
 }

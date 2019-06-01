@@ -22,7 +22,7 @@ type BaseNode = Category;
 /**
  */
 export type Node = BaseNode & {
-  parentPath?:  Key,
+  parentPath?: Key,
   subCategories: {[Key]: Label},
 }
 

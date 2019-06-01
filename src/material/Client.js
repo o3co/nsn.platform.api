@@ -28,7 +28,7 @@ export class Client extends BaseClient {
       params: {
         size,
         offset,
-      }
+      },
     })
   }
   

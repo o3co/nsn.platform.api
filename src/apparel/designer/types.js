@@ -13,8 +13,8 @@ export type Name = string
 /**
  */
 type BaseEntry = {
-  id:    Id,
-  name:  Name,
+  id: Id,
+  name: Name,
 }
 
 /**

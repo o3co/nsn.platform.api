@@ -26,7 +26,7 @@ export type Label = string
  *
  */
 type Base = {
-  id:   Id,
+  id: Id,
   name: Name,
 }
 
