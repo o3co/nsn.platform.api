@@ -3,6 +3,7 @@ version: 0.2
 env:
   variables:
     RELEASE_BRANCH: master
+    SOURCE_BRANCH: develop
   parameter-store:
     ORIGIN: GIT_PLATFOMR_API_REPO
 
@@ -16,14 +17,13 @@ phases:
       - git config --global user.email "release@codebuild.aws"
       - git config --global user.name "AWS CodeBuild"
       - npm set progress=false
+      - npm config set unsafe-perm true
   build:
     commands:
       - git checkout ${RELEASE_BRANCH}
-      - git merge develop -m "auto merge"
-      - npm install --package-lock-only
+      - git merge origin/${SOURCE_BRANCH} -m "merge ${SOURCE_BRANCH} into ${RELEASE_BRANCH}"
+      - yarn --pure-lockfile
       - npm version patch -m "Release v%s"
       - npm publish
       - git push origin ${RELEASE_BRANCH} 
       - git push origin --tags
-
-

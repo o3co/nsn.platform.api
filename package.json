@@ -21,7 +21,6 @@
     "cover:jest": "jest src --coverage",
     "flowcheck": "yarn flow src",
     "lint": "eslint src",
-    "postversion": "git push && git push --tags",
     "prebuild": "npm-run-all clean lint flowcheck",
     "prebuild:clean": "yarn clean",
     "precommit": "npm-run-all flowcheck lint",
@@ -43,7 +42,7 @@
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-flow": "^7.0.0",
     "@nsn/eslint-config": "^0.1.0",
-    "axios": ">=0.19.0",
+    "axios": ">=0.18.1",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
     "babel-plugin-external-helpers": "^6.22.0",
@@ -73,7 +72,7 @@
     "watch": "^1.0.2"
   },
   "peerDependencies": {
-    "axios": ">=0.19.0",
+    "axios": ">=0.18.1",
     "debug": "^4.1.1",
     "path": "^0.12.7"
   }
