@@ -1,6 +1,6 @@
 {
   "name": "@nsn/platform",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "dist/commonjs/index.js",
   "module": "dist/module/index.js",
   "repository": "git@github.com:o3co/nsn.platform.api.git",
