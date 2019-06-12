@@ -22,7 +22,7 @@ phases:
     commands:
       - git checkout ${RELEASE_BRANCH}
       - git merge origin/${SOURCE_BRANCH} -m "merge ${SOURCE_BRANCH} into ${RELEASE_BRANCH}"
-      - npm install --package-lock-only
+      - yarn --pure-lockfile
       - npm version patch -m "Release v%s"
       - npm publish
       - git push origin ${RELEASE_BRANCH} 

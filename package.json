@@ -21,7 +21,6 @@
     "cover:jest": "jest src --coverage",
     "flowcheck": "yarn flow src",
     "lint": "eslint src",
-    "postversion": "git push && git push --tags",
     "prebuild": "npm-run-all clean lint flowcheck",
     "prebuild:clean": "yarn clean",
     "precommit": "npm-run-all flowcheck lint",
