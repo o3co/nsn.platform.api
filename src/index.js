@@ -8,6 +8,7 @@ import * as group     from './group'
 import * as material  from './material'
 import * as product   from './product'
 import * as provider  from './provider'
+import * as ims       from './ims'
 
 export {
   apparel,
@@ -19,4 +20,5 @@ export {
   material,
   product,
   provider,
+  ims,
 }
