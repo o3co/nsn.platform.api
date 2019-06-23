@@ -35,3 +35,11 @@ export type Collection<T> = {
   requestSize: number,
   offset: number,
 }
+
+/**
+ */
+export type FetchSize = number
+
+/**
+ */
+export type FetchOffset = number
