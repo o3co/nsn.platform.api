@@ -17,3 +17,5 @@ type BaseEntry = {}
 export type Entry = BaseEntry & {
 }
 
+export type IndexedEntry = BaseEntry & {}
+

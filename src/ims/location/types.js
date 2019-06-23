@@ -17,3 +17,7 @@ type BaseEntry = Location
 export type Entry = BaseEntry & {
 }
 
+/**
+ */
+export type IndexedEntry = BaseEntry & {
+}
