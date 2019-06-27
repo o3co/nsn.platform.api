@@ -9,6 +9,7 @@ import * as material  from './material'
 import * as product   from './product'
 import * as provider  from './provider'
 import * as ims       from './ims'
+import * as order     from './order'
 
 export {
   apparel,
@@ -21,4 +22,5 @@ export {
   product,
   provider,
   ims,
+  order,
 }
