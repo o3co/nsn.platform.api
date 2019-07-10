@@ -1,4 +1,4 @@
-// flow-typed signature: 2e2518a627c9370329ed4a384a0218d8
+// flow-typed signature: 6800b37c720d663deddd1a79beb026bc
 // flow-typed version: <<STUB>>/eslint-plugin-flowtype_v^3.9.1/flow_v0.100.0
 
 /**
@@ -127,6 +127,10 @@ declare module 'eslint-plugin-flowtype/dist/rules/requireCompoundTypeAlias' {
 }
 
 declare module 'eslint-plugin-flowtype/dist/rules/requireExactType' {
+  declare module.exports: any;
+}
+
+declare module 'eslint-plugin-flowtype/dist/rules/requireInexactType' {
   declare module.exports: any;
 }
 
@@ -359,6 +363,9 @@ declare module 'eslint-plugin-flowtype/dist/rules/requireCompoundTypeAlias.js' {
 }
 declare module 'eslint-plugin-flowtype/dist/rules/requireExactType.js' {
   declare module.exports: $Exports<'eslint-plugin-flowtype/dist/rules/requireExactType'>;
+}
+declare module 'eslint-plugin-flowtype/dist/rules/requireInexactType.js' {
+  declare module.exports: $Exports<'eslint-plugin-flowtype/dist/rules/requireInexactType'>;
 }
 declare module 'eslint-plugin-flowtype/dist/rules/requireParameterType.js' {
   declare module.exports: $Exports<'eslint-plugin-flowtype/dist/rules/requireParameterType'>;

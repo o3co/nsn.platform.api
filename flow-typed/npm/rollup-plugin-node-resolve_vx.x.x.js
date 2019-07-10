@@ -1,4 +1,4 @@
-// flow-typed signature: e5740e9ef55f8dda5dfae9c8251cc037
+// flow-typed signature: 8dde1961994c0271538048efcdf17d76
 // flow-typed version: <<STUB>>/rollup-plugin-node-resolve_v^5.0.1/flow_v0.100.0
 
 /**
@@ -30,10 +30,6 @@ declare module 'rollup-plugin-node-resolve/dist/rollup-plugin-node-resolve.es' {
   declare module.exports: any;
 }
 
-declare module 'rollup-plugin-node-resolve/src/empty' {
-  declare module.exports: any;
-}
-
 declare module 'rollup-plugin-node-resolve/src/index' {
   declare module.exports: any;
 }
@@ -44,9 +40,6 @@ declare module 'rollup-plugin-node-resolve/dist/rollup-plugin-node-resolve.cjs.j
 }
 declare module 'rollup-plugin-node-resolve/dist/rollup-plugin-node-resolve.es.js' {
   declare module.exports: $Exports<'rollup-plugin-node-resolve/dist/rollup-plugin-node-resolve.es'>;
-}
-declare module 'rollup-plugin-node-resolve/src/empty.js' {
-  declare module.exports: $Exports<'rollup-plugin-node-resolve/src/empty'>;
 }
 declare module 'rollup-plugin-node-resolve/src/index.js' {
   declare module.exports: $Exports<'rollup-plugin-node-resolve/src/index'>;

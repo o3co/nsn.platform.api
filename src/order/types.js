@@ -5,12 +5,46 @@ import type {
   Instant,
 } from '../core'
 
+/**
+ */
 export type Id = UUID
 
-type Base = {}
+/**
+ */
+export type State = string 
 
-type BaseEntry = Base & {}
+/**
+ */
+export type Title = string
 
-export type Entry = BaseEntry & {}
+/**
+ */
+export type Line = {}
 
-export type IndexedEntry = BaseEntry & {}
+/**
+ */
+type Base = {
+  id: Id,
+}
+
+/**
+ */
+type BaseEntry = Base & {
+  orderedAt: Instant,
+  operator: UUID,
+  title: Title,
+  state: State,
+  orderType: string,
+  note: string,
+}
+
+/**
+ */
+export type Entry = BaseEntry & {
+  lines: Array<Line>
+}
+
+/**
+ */
+export type IndexedEntry = BaseEntry & {
+}
