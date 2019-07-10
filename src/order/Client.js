@@ -20,11 +20,21 @@ export type RegisterParams = {
 
 /**
  */
-export type ApproveParams = {}
+export type ApproveParams = {
+}
 
 /**
  */
-export type RejectParams = {}
+export type RejectParams = {
+}
+
+/**
+ */
+export type ListOptions = {
+}
+
+const defaultListOptions: ListOptions = {
+}
 
 /**
  *
@@ -40,9 +50,10 @@ export class Client extends BaseClient {
   /**
    * List entries
    */
-  list(size: number = 10, offset: number = 0): Response<PageResult<IndexedEntry>> {
+  list = (size: number = 10, offset: number = 0, opts: ListOptions = defaultListOptions): Response<PageResult<IndexedEntry>> => {
     return this.httpClient.get(this.relativePath(), {
       params: {
+        ...opts,
         size,
         offset,
       },
@@ -52,25 +63,25 @@ export class Client extends BaseClient {
   /**
    * Describe entry
    */
-  describe(id: Id): Response<Entry> {
+  describe = (id: Id): Response<Entry> => {
     return this.httpClient.get(this.relativePath(id))
   }
 
   /**
    */
-  register(params: RegisterParams): Response<Entry> {
+  register = (params: RegisterParams): Response<Entry> => {
     return this.httpClient.post(this.relativePath(), params)
   }
 
   /**
    */
-  approve(id: Id, params: ApproveParams = {}): Response<Entry> {
+  approve = (id: Id, params: ApproveParams = {}): Response<Entry> => {
     return this.httpClient.post(this.relativePath(id, 'approve'), params)
   }
 
   /**
    */
-  reject(id: Id, params: RejectParams = {}): Response<Entry> {
+  reject = (id: Id, params: RejectParams = {}): Response<Entry> => {
     return this.httpClient.post(this.relativePath(id, 'reject'), params)
   }
 }
