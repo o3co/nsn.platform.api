@@ -28,9 +28,12 @@ export type ApproveParams = {
 export type RejectParams = {
 }
 
+export type Options = {}
+
 /**
  */
-export type ListOptions = {
+export type ListOptions = Options & {
+  groupName?: string
 }
 
 const defaultListOptions: ListOptions = {
@@ -47,6 +50,12 @@ export class Client extends BaseClient {
     return '/orders'
   }
 
+  headersFromOptions = (opts: Options) => {
+    return {
+      'X-GROUP-NAME': opts.groupName,
+    }
+  }
+
   /**
    * List entries
    */
@@ -57,32 +66,41 @@ export class Client extends BaseClient {
         size,
         offset,
       },
+      headers: this.headersFromOptions(opts),
     })
   }
 
   /**
    * Describe entry
    */
-  describe = (id: Id): Response<Entry> => {
-    return this.httpClient.get(this.relativePath(id))
+  describe = (id: Id, opts: Options = {}): Response<Entry> => {
+    return this.httpClient.get(this.relativePath(id), {
+      headers: this.headersFromOptions(opts),
+    })
   }
 
   /**
    */
-  register = (params: RegisterParams): Response<Entry> => {
-    return this.httpClient.post(this.relativePath(), params)
+  register = (params: RegisterParams, opts: Options = {}): Response<Entry> => {
+    return this.httpClient.post(this.relativePath(), params, {
+      headers: this.headersFromOptions(opts),
+    })
   }
 
   /**
    */
-  approve = (id: Id, params: ApproveParams = {}): Response<Entry> => {
-    return this.httpClient.post(this.relativePath(id, 'approve'), params)
+  approve = (id: Id, params: ApproveParams = {}, opts: Options = {}): Response<Entry> => {
+    return this.httpClient.post(this.relativePath(id, 'approve'), params, {
+      headers: this.headersFromOptions(opts),
+    })
   }
 
   /**
    */
-  reject = (id: Id, params: RejectParams = {}): Response<Entry> => {
-    return this.httpClient.post(this.relativePath(id, 'reject'), params)
+  reject = (id: Id, params: RejectParams = {}, opts: Options = {}): Response<Entry> => {
+    return this.httpClient.post(this.relativePath(id, 'reject'), params, {
+      headers: this.headersFromOptions(opts),
+    })
   }
 }
 
