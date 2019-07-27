@@ -19,6 +19,9 @@ export type Options = {
   brandName?: string
 }
 
+const DefaultOptions = {
+}
+
 /**
  */
 export type ListOptions = Options & {
@@ -30,8 +33,10 @@ export type ListOptions = Options & {
 
 /**
  */
-const defaultListOptions: ListOptions = {
-  filter: {},
+const DefaultListOptions: ListOptions = {
+  ...DefaultOptions,
+  filter: {
+  },
 }
 
 /**
@@ -47,16 +52,24 @@ export class Client extends BaseClient {
 
   /**
    */
-  headersFromOptions = (opts: Options) => {
-    return {
-      'X-GROUP-NAME': opts.brandName ? `brand.${ opts.brandName }` : null,
+  headersFromOptions = (opts: Options = {}) => {
+    const formattedOptions = {
+      ...DefaultOptions,
+      ...opts,
     }
+
+    let headers = {}
+
+    if(formattedOptions.brandName)
+      headers['X-GROUP-NAME']  = `brand.${formattedOptions.brandName}`
+
+    return headers
   }
 
   /**
    * List entries
    */
-  list = (size: number = 10, offset: number = 0, opts: ListOptions = defaultListOptions): Response<PageResult<Index>> => {
+  list = (size: number = 10, offset: number = 0, opts: ListOptions = DefaultListOptions): Response<PageResult<Index>> => {
     return this.httpClient.get(this.relativePath(), {
       params: {
         ...opts.filter,
