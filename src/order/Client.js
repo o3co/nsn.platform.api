@@ -4,7 +4,7 @@ import {
   BaseClient,
   type Response,
   type PageResult,
-} from '../core'
+} from 'core'
 
 import type {
   Id,
@@ -12,6 +12,14 @@ import type {
   IndexedEntry,
   Entry,
 } from './types'
+
+import {
+  Client as LineClient,
+} from './line/Client'
+
+import {
+  Client as RequestClient,
+} from './request/Client'
 
 /**
  */
@@ -28,12 +36,13 @@ export type ApproveParams = {
 export type RejectParams = {
 }
 
-export type Options = {}
+export type Options = {
+  groupName?: string
+}
 
 /**
  */
 export type ListOptions = Options & {
-  groupName?: string
 }
 
 const defaultListOptions: ListOptions = {
@@ -44,63 +53,21 @@ const defaultListOptions: ListOptions = {
  * @class
  */
 export class Client extends BaseClient {
-  /**
-   */
-  get basepath(): string {
-    return '/orders'
+
+  //constructor(params: ConstructParams = {}) {
+  //  super(params)
+  //}
+
+  get lines() {
+    this.lineClient = new LineClient(this.params)
+    return this.lineClient
   }
 
-  headersFromOptions = (opts: Options) => {
-    return {
-      'X-GROUP-NAME': opts.groupName,
-    }
+  get requests() {
+    this.requestClient = new RequestClient(this.params)
+    return this.requestClient
   }
 
-  /**
-   * List entries
-   */
-  list = (size: number = 10, offset: number = 0, opts: ListOptions = defaultListOptions): Response<PageResult<IndexedEntry>> => {
-    return this.httpClient.get(this.relativePath(), {
-      params: {
-        ...opts,
-        size,
-        offset,
-      },
-      headers: this.headersFromOptions(opts),
-    })
-  }
-
-  /**
-   * Describe entry
-   */
-  describe = (id: Id, opts: Options = {}): Response<Entry> => {
-    return this.httpClient.get(this.relativePath(id), {
-      headers: this.headersFromOptions(opts),
-    })
-  }
-
-  /**
-   */
-  register = (params: RegisterParams, opts: Options = {}): Response<Entry> => {
-    return this.httpClient.post(this.relativePath(), params, {
-      headers: this.headersFromOptions(opts),
-    })
-  }
-
-  /**
-   */
-  approve = (id: Id, params: ApproveParams = {}, opts: Options = {}): Response<Entry> => {
-    return this.httpClient.post(this.relativePath(id, 'approve'), params, {
-      headers: this.headersFromOptions(opts),
-    })
-  }
-
-  /**
-   */
-  reject = (id: Id, params: RejectParams = {}, opts: Options = {}): Response<Entry> => {
-    return this.httpClient.post(this.relativePath(id, 'reject'), params, {
-      headers: this.headersFromOptions(opts),
-    })
-  }
+  listLines = this.lines.list
 }
 

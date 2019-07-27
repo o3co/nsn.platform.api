@@ -4,6 +4,7 @@ import copy from 'rollup-plugin-copy';
 import flow from 'rollup-plugin-flow';
 import external from 'rollup-plugin-peer-deps-external'
 import resolve from 'rollup-plugin-node-resolve'
+import includePaths from 'rollup-plugin-includepaths'
 
 import pkg from './package.json'
 
@@ -33,11 +34,17 @@ const plugins = targets => ([
   }),
   // copy Flow definitions from source to destination directory
   copy({
-    files: ['src/*.flow'],
+    files: [
+      'src/*.flow',
+    ],
     dest: 'lib',
   }),
   external(),
   resolve(),
+  includePaths({
+    include: {},
+    paths: ['src'],
+  }),
 ]);
 
 export default [{
@@ -48,5 +55,7 @@ export default [{
     sourcemap: true,
   },
   // build common JS for node 6
-  plugins: plugins({ node: 'current' }),
+  plugins: plugins({
+    node: 'current',
+  }),
 }];

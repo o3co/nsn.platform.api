@@ -1,0 +1,6 @@
+  "scripts": {
+    "build:flow": "flow-copy-source src dist/module",
+    "lint:flow": "NODE_PATH=./src flow check src",
+    "watch:flow": "watch '$npm_execpath run lint:flow' ./src"
+    "flowcheck": "yarn flow src",
+    "prebuild:flow": "npm-run-all flowcheck",

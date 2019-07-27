@@ -8,7 +8,16 @@ module.exports = {
     "eslint:recommended",
     "plugin:flowtype/recommended",
     "@nsn",
+    "plugin:import/errors",
+    "plugin:import/warnings",
   ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "./src"]
+      }
+    }
+  },
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -17,6 +26,7 @@ module.exports = {
   "plugins": [
     "flowtype",
     "jest",
+    "import",
   ],
   "rules": {
     "indent": [

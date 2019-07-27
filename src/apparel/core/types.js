@@ -1,8 +1,8 @@
-/* @flow strict */
+/* @flow */
 
 import {
   type Key as CategoryKey,
-} from '../../category'
+} from 'category'
 
 /**
  *

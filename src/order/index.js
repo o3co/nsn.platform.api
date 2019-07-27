@@ -1,5 +1,7 @@
 /* @flow strict */
 
-export * from './Client'
+export * from './constants'
 export * from './types'
 
+// Components
+export * from './Client'
