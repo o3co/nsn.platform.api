@@ -55,9 +55,17 @@ export class Client extends BaseClient {
   }
 
   headersFromOptions = (opts: Options) => {
-    return {
-      'X-GROUP-NAME': opts.groupName,
+    const formattedOptions = {
+      ...DefaultOptions,
+      ...opts,
     }
+
+    let headers = {}
+
+    if(formattedOptions.brandName)
+      headers['X-GROUP-NAME']  = formattedOptions.groupName
+
+    return headers
   }
 
   /**
