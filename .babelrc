@@ -1,5 +1,5 @@
 {
-  presets: [
+  "presets": [
     "@babel/preset-flow",
     ["@babel/env", {
       "targets": {
@@ -7,10 +7,13 @@
       }
     }]
   ],
-  'plugins': [
+  "plugins": [
     "@babel/plugin-transform-flow-strip-types",
     "@babel/plugin-syntax-export-namespace-from",
     ["@babel/plugin-proposal-class-properties", { "loose": true }],
+    ["module-resolver", {
+      "root": ["./src"]
+    }]
   ]
 }
 
