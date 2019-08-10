@@ -14,6 +14,18 @@ import type {
 
 /**
  */
+export type RegisterParams = {}
+
+/**
+ */
+export type UpdateParams = {}
+
+/**
+ */
+export type Options = {}
+
+/**
+ */
 export class Client extends BaseClient {
   /**
    */
@@ -36,6 +48,24 @@ export class Client extends BaseClient {
    */
   describeEntry = (name: Name): Response<Entry> => {
     return this.httpClient.get(this.relativePath(name))
+  }
+
+  /**
+   */
+  registerEntry = (params: RegisterParams) => {
+    return this.httpClient.post(this.relativePath(), params)
+  }
+
+  /**
+   */
+  updateEntry = (name: Name, params: UpdateParams) => {
+    return this.httpClient.post(this.relativePath(name), params)
+  }
+
+  /**
+   */
+  deleteEntry = (name: Name) => {
+    return this.httpClient.delete(this.relativePath(name))
   }
 }
 
