@@ -13,6 +13,8 @@ import type {
   Entry,
 } from './types'
 
+/**
+ */
 export class Client extends BaseClient {
   /**
    */
@@ -23,7 +25,7 @@ export class Client extends BaseClient {
   /**
    *
    */
-  list(size: number = 10, offset: number = 0): Response<PageResult<IndexedEntry>> {
+  listEntries = (size: number = 10, offset: number = 0): Response<PageResult<IndexedEntry>> => {
     return this.httpClient.get(this.relativePath(), {
       params: {
         size,
@@ -34,7 +36,7 @@ export class Client extends BaseClient {
 
   /**
    */
-  describe(id: Id): Response<Entry> {
+  describeEntry = (id: Id): Response<Entry> => {
     return this.httpClient.get(this.relativePath(id))
   }
 }
