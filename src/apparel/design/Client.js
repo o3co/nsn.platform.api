@@ -108,7 +108,7 @@ export class Client extends BaseClient {
   /**
    * Create options from params
    */
-  const httpOptions = (params: any = {}) => {
+  httpOptions = (params: any = {}) => {
     debug('option parameters', params)
     return {
       headers: {
@@ -187,7 +187,7 @@ export class Client extends BaseClient {
   /**
    *
    */
-  unarchive = (id: Id, params: UnarchiveParams = {}): Response<void> => {
+  unarchive = (id: Id, params: UnarchiveParams = {}, options: Options = {}): Response<void> => {
     const opts = {
       ...DefaultOptions,
       ...options,
@@ -199,7 +199,7 @@ export class Client extends BaseClient {
   /**
    * Order sample
    */
-  order = (id: Id, params: OrderParams): Response<void> => {
+  order = (id: Id, params: OrderParams, options: Options = {}): Response<void> => {
     const opts = {
       ...DefaultOptions,
       ...options,
@@ -211,7 +211,7 @@ export class Client extends BaseClient {
   /**
    *
    */
-  productize = (id: Id, params: ProductizeParams = {}): Response<void> => {
+  productize = (id: Id, params: ProductizeParams = {}, options: Options = {}): Response<void> => {
     const opts = {
       ...DefaultOptions,
       ...options,
