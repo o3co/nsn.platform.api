@@ -59,7 +59,7 @@ export class Client extends BaseClient {
   /**
    */
   updateEntry = (name: Name, params: UpdateParams) => {
-    return this.httpClient.post(this.relativePath(name), params)
+    return this.httpClient.put(this.relativePath(name), params)
   }
 
   /**
