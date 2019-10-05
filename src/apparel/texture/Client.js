@@ -53,7 +53,7 @@ export class Client extends BaseClient {
   /**
    */
   registerEntry = (params: RegisterParams) => {
-    return this.httpClient.post(this.relativePath(), params)
+    return this.httpClient.post(this.relativePath(params.name), params)
   }
 
   /**
