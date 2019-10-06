@@ -23,7 +23,6 @@
     "prebuild:clean": "yarn clean",
     "prebuild:lint": "npm-run-all lint",
     "precommit": "npm-run-all flowcheck lint",
-    "prepare": "npm-run-all build",
     "preversion": "npm-run-all lint",
     "test": "yarn jest src",
     "test:watch": "yarn jest src --watch --notify",

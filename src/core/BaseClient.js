@@ -7,12 +7,13 @@ import axios, {
 
 import path from 'path'
 
-import pathToRegexp from 'path-to-regexp'
+//import pathToRegexp from 'path-to-regexp'
 
 import {
   AuthenticationError,
 } from './errors'
 
+const pathToRegexp = require('path-to-regexp')
 /**
  */
 export type ConstructParams = {
