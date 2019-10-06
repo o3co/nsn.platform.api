@@ -36,7 +36,7 @@ export class Client extends BaseClient {
    * List brand entries
    */
   list = (size: number = 10, offset: number = 0): Response<PageResult<IndexedEntry>> => {
-    return this.httpClient.get(this.relativePath(), {
+    return this.httpClient.get(this.path(), {
       params: {
         size,
         offset,
@@ -48,32 +48,32 @@ export class Client extends BaseClient {
    * Describe the brand entry
    */
   describeEntry = (key: Key): Response<Entry> => {
-    return this.httpClient.get(this.relativePath(key))
+    return this.httpClient.get(this.path(key))
   }
 
   /**
    */
   createEntry = (param: CreateParams): Response<Entry> => {
-    return this.httpClient.get(this.relativePath())
+    return this.httpClient.get(this.path())
   }
 
   /**
    */
   updateEntry = (key: Key, params: UpdateParams): Response<void> => {
-    return this.httpClient.get(this.relativePath(key))
+    return this.httpClient.get(this.path(key))
   }
 
   /**
    */
   deleteEntry = (key: Key): Response<void> => {
-    return this.httpClient.delete(this.relativePath(key))
+    return this.httpClient.delete(this.path(key))
   }
 
   /**
    * List designers of the brand
    */
   listDesigners = (key: Key): Response<PageResult<Member>> => {
-    return this.httpClient.get(this.relativePath(key, '/teams/designer/members'))
+    return this.httpClient.get(this.path(`${key}/teams/designer/members`))
   }
 }
 

@@ -126,7 +126,7 @@ export class Client extends BaseClient {
       ...options,
     }
 
-    return this.httpClient.get(this.relativePath(), {
+    return this.httpClient.get(this.path(), {
       ...this.httpOptions(opts),
       params: {
         size,
@@ -145,7 +145,7 @@ export class Client extends BaseClient {
       ...options,
     }
 
-    return this.httpClient.get(this.relativePath(id), this.httpOptions(opts))
+    return this.httpClient.get(this.path(id), this.httpOptions(opts))
   }
 
   /**
@@ -157,7 +157,7 @@ export class Client extends BaseClient {
       ...options,
     }
 
-    return this.httpClient.post(this.relativePath(), entry, this.httpOptions(opts))
+    return this.httpClient.post(this.path(), entry, this.httpOptions(opts))
   }
 
   /**
@@ -169,7 +169,7 @@ export class Client extends BaseClient {
       ...options,
     }
 
-    return this.httpClient.post(this.relativePath(id), params, this.httpOptions(opts))
+    return this.httpClient.post(this.path(id), params, this.httpOptions(opts))
   }
 
   /**
@@ -181,7 +181,7 @@ export class Client extends BaseClient {
       ...options,
     }
 
-    return this.httpClient.post(this.relativePath(id, 'archive'), params, this.httpOptions(opts))
+    return this.httpClient.post(this.path(`${id}/archive`), params, this.httpOptions(opts))
   }
 
   /**
@@ -193,7 +193,7 @@ export class Client extends BaseClient {
       ...options,
     }
 
-    return this.httpClient.post(this.relativePath(id, 'unarchive'), params, this.httpOptions(opts))
+    return this.httpClient.post(this.path(`${id}/unarchive`), params, this.httpOptions(opts))
   }
 
   /**
@@ -205,7 +205,7 @@ export class Client extends BaseClient {
       ...options,
     }
 
-    return this.httpClient.post(this.relativePath(id, 'order'), params, this.httpOptions(opts))
+    return this.httpClient.post(this.path(`${id}/order`), params, this.httpOptions(opts))
   }
 
   /**
@@ -217,7 +217,7 @@ export class Client extends BaseClient {
       ...options,
     }
 
-    return this.httpClient.post(this.relativePath(id, 'productize'), params, this.httpOptions(opts))
+    return this.httpClient.post(this.path(`${id}/productize`), params, this.httpOptions(opts))
   }
 }
 

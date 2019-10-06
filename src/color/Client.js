@@ -24,12 +24,12 @@ export class Client extends BaseClient {
   /**
    */
   listEntries = (): Response<PageResult<IndexedEntry>> => {
-    return this.httpClient.get(this.relativePath())
+    return this.httpClient.get(this.path())
   }
 
   /**
    */
   describeEntry = (name: Name): Response<Entry> => {
-    return this.httpClient.get(this.relativePath(name))
+    return this.httpClient.get(this.path(name))
   }
 }

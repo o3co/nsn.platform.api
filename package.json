@@ -23,7 +23,6 @@
     "prebuild:clean": "yarn clean",
     "prebuild:lint": "npm-run-all lint",
     "precommit": "npm-run-all flowcheck lint",
-    "prepare": "npm-run-all build",
     "preversion": "npm-run-all lint",
     "test": "yarn jest src",
     "test:watch": "yarn jest src --watch --notify",
@@ -75,5 +74,8 @@
     "axios": ">=0.18.1",
     "debug": "^4.1.1",
     "path": "^0.12.7"
+  },
+  "dependencies": {
+    "path-to-regexp": "^3.1.0"
   }
 }

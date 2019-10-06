@@ -24,7 +24,7 @@ export class Client extends BaseClient {
   /**
    */
   list = (size: FetchSize = 10, offset: FetchOffset = 0): Response<PageResult<IndexedEntry>> => {
-    return this.httpClient.get(this.relativePath(), {
+    return this.httpClient.get(this.path(), {
       params: {
         size,
         offset,
@@ -35,7 +35,7 @@ export class Client extends BaseClient {
   /**
    */
   describe = (id: ID): Response<Entry> => {
-    return this.httpClient.get(this.relativePath(id))
+    return this.httpClient.get(this.path(id))
   }
 }
 
