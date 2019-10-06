@@ -70,7 +70,7 @@ export class Client extends BaseClient {
    * List entries
    */
   list = (size: number = 10, offset: number = 0, opts: ListOptions = DefaultListOptions): Response<PageResult<Index>> => {
-    return this.httpClient.get(this.relativePath(), {
+    return this.httpClient.get(this.path(), {
       params: {
         ...opts.filter,
         size,

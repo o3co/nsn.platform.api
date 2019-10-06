@@ -88,7 +88,7 @@ export class Client extends BaseClient {
    * List entries
    */
   list = (size: number = 10, offset: number = 0, opts: ListOptions = DefaultListOptions): Response<PageResult<Index>> => {
-    return this.httpClient.get(this.relativePath(), {
+    return this.httpClient.get(this.path(), {
       params: {
         ...opts.filter,
         size,
@@ -102,7 +102,7 @@ export class Client extends BaseClient {
    * Describe entry
    */
   describe = (id: ID, opts: Options = {}): Response<Entry> => {
-    return this.httpClient.get(this.relativePath(id), {
+    return this.httpClient.get(this.path(id), {
       headers: this.headersFromOptions(opts),
     })
   }
@@ -110,7 +110,7 @@ export class Client extends BaseClient {
   /**
    */
   register = (params: RegisterParams, opts: Options = {}): Response<Entry> => {
-    return this.httpClient.post(this.relativePath(), params, {
+    return this.httpClient.post(this.path(), params, {
       headers: this.headersFromOptions(opts),
     })
   }
@@ -118,7 +118,7 @@ export class Client extends BaseClient {
 //  /**
 //   */
 //  approve = (id: ID, params: ApproveParams = {}, opts: Options = {}): Response<Entry> => {
-//    return this.httpClient.post(this.relativePath(id, 'approve'), params, {
+//    return this.httpClient.post(this.path(id, 'approve'), params, {
 //      headers: this.headersFromOptions(opts),
 //    })
 //  }
@@ -126,7 +126,7 @@ export class Client extends BaseClient {
 //  /**
 //   */
 //  reject = (id: ID, params: RejectParams = {}, opts: Options = {}): Response<Entry> => {
-//    return this.httpClient.post(this.relativePath(id, 'reject'), params, {
+//    return this.httpClient.post(this.path(id, 'reject'), params, {
 //      headers: this.headersFromOptions(opts),
 //    })
 //  }

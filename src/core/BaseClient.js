@@ -7,6 +7,8 @@ import axios, {
 
 import path from 'path'
 
+import pathToRegexp from 'path-to-regexp'
+
 import {
   AuthenticationError,
 } from './errors'
@@ -35,13 +37,21 @@ export class BaseClient {
   }
 
   /**
+   * @deprecated use path instead
    */
   relativePath = (...args: Array<string>): string => {
     const paths = Array.prototype.slice.apply(args)
     if(this.basepath) {
+      //paths.unshift(pathToRegexp(this.basepath, opts))
       paths.unshift(this.basepath)
     }
     return path.join.apply(null, paths)
+  }
+
+  /**
+   */
+  path = (path: string = '', args = {}): string => {
+    return pathToRegexp(path.join(this.basepath, path), args)
   }
 
   /**

@@ -28,18 +28,18 @@ export class Client extends BaseClient {
   /**
    */
   describeNode = (key: Key): Response<Node> => {
-    return this.httpClient.get(this.relativePath(key))
+    return this.httpClient.get(this.path(key))
   }
 
   /**
    */
   putNode = (key: Key, params: PutParams): Response<Node> => {
-    return this.httpClient.put(this.relativePath(key), params)
+    return this.httpClient.put(this.path(key), params)
   }
 
   /**
    */
   deleteNode = (key: Key): Response<void> => {
-    return this.httpClient.delete(this.relativePath(key))
+    return this.httpClient.delete(this.path(key))
   }
 }

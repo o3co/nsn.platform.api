@@ -36,7 +36,7 @@ export class Client extends BaseClient {
   /**
    */
   listEntries = (size: number = 10, offset: number = 0): Response<PageResult<IndexedEntry>> => {
-    return this.httpClient.get(this.relativePath(), {
+    return this.httpClient.get(this.path(), {
       params: {
         size,
         offset,
@@ -47,25 +47,25 @@ export class Client extends BaseClient {
   /**
    */
   describeEntry = (name: Name): Response<Entry> => {
-    return this.httpClient.get(this.relativePath(name))
+    return this.httpClient.get(this.path(name))
   }
 
   /**
    */
   registerEntry = (params: RegisterParams) => {
-    return this.httpClient.post(this.relativePath(params.name), params)
+    return this.httpClient.post(this.path(params.name), params)
   }
 
   /**
    */
   updateEntry = (name: Name, params: UpdateParams) => {
-    return this.httpClient.post(this.relativePath(name), params)
+    return this.httpClient.post(this.path(name), params)
   }
 
   /**
    */
   deleteEntry = (name: Name) => {
-    return this.httpClient.delete(this.relativePath(name))
+    return this.httpClient.delete(this.path(name))
   }
 }
 

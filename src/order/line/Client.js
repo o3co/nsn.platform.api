@@ -72,7 +72,7 @@ export class Client extends BaseClient {
    * List entries
    */
   list = (size: number = 10, offset: number = 0, opts: ListOptions = DefaultListOptions): Response<PageResult<Index>> => {
-    return this.httpClient.get(this.relativePath(), {
+    return this.httpClient.get(this.path(), {
       params: {
         ...opts,
         size,
@@ -86,7 +86,7 @@ export class Client extends BaseClient {
    * Describe entry
    */
   describe = (id: LineID, opts: Options = {}): Response<Entry> => {
-    return this.httpClient.get(this.relativePath(id), {
+    return this.httpClient.get(this.path(id), {
       headers: this.headersFromOptions(opts),
     })
   }
@@ -95,7 +95,7 @@ export class Client extends BaseClient {
     if(!params.provider) throw new Error('provider has to be specified.')
     if(!params.groupName) throw new Error('groupName has to be specified.')
 
-    return this.httpClient.get(this.relativePath('/resolve'), {
+    return this.httpClient.get(this.path('/resolve'), {
       params: {
         ...params,
       },
@@ -107,7 +107,7 @@ export class Client extends BaseClient {
    * Register Line 
    */
   register = (params: RegisterParams, opts: Options = {}): Response<Entry> => {
-    return this.httpClient.post(this.relativePath(), params, {
+    return this.httpClient.post(this.path(), params, {
       headers: this.headersFromOptions(opts),
     })
   }
