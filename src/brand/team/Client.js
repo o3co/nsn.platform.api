@@ -5,16 +5,14 @@ import {
   type PageResult,
 } from '../../core'
 
-import pathToRegexp from 'path-to-regexp'
-
 /**
  *
  * @class
  */
-export class BrandScopedClient extends BaseClient {
+export class Client extends BaseClient {
 
   get basepath() {
-    return pathToRegexp('/brands/:brand/teams')
+    return '/brands/:brand/teams'
   }
 
   /**

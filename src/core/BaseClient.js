@@ -14,6 +14,7 @@ import {
 } from './errors'
 
 const pathToRegexp = require('path-to-regexp')
+
 /**
  */
 export type ConstructParams = {
@@ -51,8 +52,8 @@ export class BaseClient {
 
   /**
    */
-  path = (path: string = '', args = {}): string => {
-    return pathToRegexp(path.join(this.basepath, path), args)
+  path = (pathString: string = '', args = {}): string => {
+    return pathToRegexp.compile(path.join(this.basepath, pathString))(args)
   }
 
   /**
