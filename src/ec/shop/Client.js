@@ -5,22 +5,21 @@ import {
   type Response,
   type PageResult,
   type URL,
-} from '../core'
+} from '../../core'
 
 import type {
   Key,
-  Member,
   //
-  IndexedEntry,
   Entry,
 } from './types'
 
 /**
  */
 export type CreateParams = {
+  mall: MallKey,
   name: Name,
   uniqueName: Key,
-  url?: URL,
+  url: URL,
 }
 
 /**
@@ -35,13 +34,13 @@ export type UpdateParams = {
 export class Client extends BaseClient {
 
   get basepath() {
-    return '/brands'
+    return '/ec/shops'
   }
 
   /**
    * List brand entries
    */
-  list = (size: number = 10, offset: number = 0): Response<PageResult<IndexedEntry>> => {
+  listEntries = (size: number = 10, offset: number = 0): Response<PageResult<Entry>> => {
     return this.httpClient.get(this.path(), {
       params: {
         size,
@@ -73,13 +72,6 @@ export class Client extends BaseClient {
    */
   deleteEntry = (key: Key): Response<void> => {
     return this.httpClient.delete(this.path(key))
-  }
-
-  /**
-   * List designers of the brand
-   */
-  listDesigners = (key: Key): Response<PageResult<Member>> => {
-    return this.httpClient.get(this.path(`${key}/teams/designer/members`))
   }
 }
 
