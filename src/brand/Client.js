@@ -4,6 +4,7 @@ import {
   BaseClient,
   type Response,
   type PageResult,
+  type URL,
 } from '../core'
 
 import type {
@@ -16,11 +17,16 @@ import type {
 
 /**
  */
-export type CreateParams = {}
+export type CreateParams = {
+  name: Name,
+  uniqueName: Key,
+  url?: URL,
+}
 
 /**
  */
-export type UpdateParams = {}
+export type UpdateParams = {
+}
 
 /**
  *
@@ -53,14 +59,14 @@ export class Client extends BaseClient {
 
   /**
    */
-  createEntry = (param: CreateParams): Response<Entry> => {
-    return this.httpClient.get(this.path())
+  createEntry = (params: CreateParams): Response<Entry> => {
+    return this.httpClient.post(this.path(), params)
   }
 
   /**
    */
   updateEntry = (key: Key, params: UpdateParams): Response<void> => {
-    return this.httpClient.get(this.path(key))
+    return this.httpClient.post(this.path(key), params)
   }
 
   /**
