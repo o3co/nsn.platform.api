@@ -31,16 +31,36 @@ export type UpdateParams = {
  * @class
  */
 export class Client extends BaseClient {
+  
+  static DefaultOptions = {
+  }
 
   get basepath() {
     return '/ec/malls'
   }
 
   /**
+   * Create options from params
+   */
+  httpOptions = (opts: any = {}) => {
+    const params = {
+      ...this.DefaultOptions,
+      ...params,
+    }
+
+    return {
+      headers: {
+        'X-BRAND': params.brand,
+      },
+    }
+  }
+
+  /**
    * List brand entries
    */
-  listEntries = (size: number = 10, offset: number = 0): Response<PageResult<Entry>> => {
+  listEntries = (size: number = 10, offset: number = 0, opts: Options = {}): Response<PageResult<Entry>> => {
     return this.httpClient.get(this.path(), {
+      ...this.httpOptions(opts),
       params: {
         size,
         offset,
@@ -51,26 +71,26 @@ export class Client extends BaseClient {
   /**
    * Describe the brand entry
    */
-  describeEntry = (key: Key): Response<Entry> => {
-    return this.httpClient.get(this.path(key))
+  describeEntry = (key: Key, opts: Options = {}): Response<Entry> => {
+    return this.httpClient.get(this.path(key), this.httpOptions(opts))
   }
 
   /**
    */
-  createEntry = (params: CreateParams): Response<Entry> => {
-    return this.httpClient.post(this.path(), params)
+  createEntry = (params: CreateParams, opts: Options = {}): Response<Entry> => {
+    return this.httpClient.post(this.path(), params, this.httpOptions(opts))
   }
 
   /**
    */
-  updateEntry = (key: Key, params: UpdateParams): Response<void> => {
-    return this.httpClient.post(this.path(key), params)
+  updateEntry = (key: Key, params: UpdateParams, opts: Options = {}): Response<void> => {
+    return this.httpClient.post(this.path(key), params, this.httpOptions(opts))
   }
 
   /**
    */
-  deleteEntry = (key: Key): Response<void> => {
-    return this.httpClient.delete(this.path(key))
+  deleteEntry = (key: Key, opts: Options = {}): Response<void> => {
+    return this.httpClient.delete(this.path(key), this.httpOptions(opts))
   }
 }
 
