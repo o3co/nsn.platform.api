@@ -77,9 +77,11 @@ export class Client extends BaseClient {
 
   /**
    * List designers of the brand
+   *
+   * @deprecated
    */
   listDesigners = (key: Key): Response<PageResult<Member>> => {
-    return this.httpClient.get(this.path(`${key}/teams/designer/members`))
+    return this.httpClient.get(this.path(`${key}/designers/members`))
   }
 }
 

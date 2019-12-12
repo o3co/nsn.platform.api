@@ -87,7 +87,7 @@ export class Client extends BaseClient {
   /**
    * List entries
    */
-  list = (size: number = 10, offset: number = 0, opts: ListOptions = DefaultListOptions): Response<PageResult<Index>> => {
+  listEntries = (size: number = 10, offset: number = 0, opts: ListOptions = DefaultListOptions): Response<PageResult<Index>> => {
     return this.httpClient.get(this.path(), {
       params: {
         ...opts.filter,
@@ -101,7 +101,7 @@ export class Client extends BaseClient {
   /**
    * Describe entry
    */
-  describe = (id: ID, opts: Options = {}): Response<Entry> => {
+  describeEntry = (id: ID, opts: Options = {}): Response<Entry> => {
     return this.httpClient.get(this.path(id), {
       headers: this.headersFromOptions(opts),
     })
@@ -109,7 +109,7 @@ export class Client extends BaseClient {
 
   /**
    */
-  register = (params: RegisterParams, opts: Options = {}): Response<Entry> => {
+  registerEntry = (params: RegisterParams, opts: Options = {}): Response<Entry> => {
     return this.httpClient.post(this.path(), params, {
       headers: this.headersFromOptions(opts),
     })

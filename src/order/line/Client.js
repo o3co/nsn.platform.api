@@ -63,7 +63,7 @@ export class Client extends BaseClient {
     let headers = {}
 
     if(formattedOptions.brandName)
-      headers['X-GROUP-NAME']  = formattedOptions.groupName
+      headers['X-GROUP-NAME']  = formattedOptions.brandName
 
     return headers
   }
@@ -71,10 +71,9 @@ export class Client extends BaseClient {
   /**
    * List entries
    */
-  list = (size: number = 10, offset: number = 0, opts: ListOptions = DefaultListOptions): Response<PageResult<Index>> => {
+  listEntries = (size: number = 10, offset: number = 0, opts: ListOptions = DefaultListOptions): Response<PageResult<Index>> => {
     return this.httpClient.get(this.path(), {
       params: {
-        ...opts,
         size,
         offset,
       },
@@ -85,7 +84,7 @@ export class Client extends BaseClient {
   /**
    * Describe entry
    */
-  describe = (id: LineID, opts: Options = {}): Response<Entry> => {
+  describeEntry = (id: LineID, opts: Options = {}): Response<Entry> => {
     return this.httpClient.get(this.path(id), {
       headers: this.headersFromOptions(opts),
     })
