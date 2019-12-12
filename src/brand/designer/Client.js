@@ -12,7 +12,7 @@ import {
 export class Client extends BaseClient {
 
   get basepath() {
-    return '/brands/:brand/teams/designer/members'
+    return '/brands/:brand/designers/members'
   }
 
   /**
