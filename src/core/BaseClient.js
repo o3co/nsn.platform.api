@@ -60,10 +60,15 @@ export class BaseClient {
    */
   constructor(params: ConstructParams = {}) {
     this.params = params
-    if(params.httpClient && (params.httpClient instanceof Axios)) {
-      this.httpClient = params.httpClient
+
+    this.init()
+  }
+
+  init = () => {
+    if(this.params.httpClient && (this.params.httpClient instanceof Axios)) {
+      this.httpClient = this.params.httpClient
     } else {
-      this.httpClient = axios.create(params.httpClient)
+      this.httpClient = axios.create(this.params.httpClient)
     }
 
     this.httpClient.interceptors.response.use(

@@ -49,13 +49,13 @@ export class Client extends BaseClient {
   httpOptions = (opts: any = {}) => {
     const params = {
       ...this.DefaultOptions,
-      ...params,
+      ...opts,
     }
 
     return {
       headers: {
-        'X-BRAND': params.brand,
-        'X-SHOP-ID': params.shop,
+        'X-BRAND': opts.brand,
+        'X-SHOP-ID': opts.shop,
       },
     }
   }
